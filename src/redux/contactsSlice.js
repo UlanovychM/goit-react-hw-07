@@ -6,8 +6,6 @@ const initialState = { items: [], isLoading: false, error: null };
 const getActions = type =>
 	isAnyOf(fetchContacts[type], addContacts[type], deleteContacts[type]);
 
-
-
 export const contactsSlice = createSlice({
 	name: 'contacts',
 	initialState,
@@ -20,10 +18,9 @@ export const contactsSlice = createSlice({
 				state.items = [...state.items, actions.payload];
 			})
 			.addCase(deleteContacts.fulfilled, (state, actions) => {
-				const index = state.items.findIndex(
-					contact => contact.id === actions.payload
+				state.items = state.items.filter(
+					item => item.id !== actions.payload.id
 				);
-				state.items.splice(index, 1);
 			})
 			.addMatcher(getActions('pending'), state => {
 				state.isLoading = true;
