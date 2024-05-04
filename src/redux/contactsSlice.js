@@ -4,7 +4,9 @@ import { fetchContacts, addContacts, deleteContacts } from './operations';
 const initialState = { items: [], isLoading: false, error: null };
 
 const getActions = type =>
-	isAnyOf(fetchContacts[type], addContact[type], deleteContact[type]);
+	isAnyOf(fetchContacts[type], addContacts[type], deleteContacts[type]);
+
+
 
 export const contactsSlice = createSlice({
 	name: 'contacts',
@@ -24,7 +26,7 @@ export const contactsSlice = createSlice({
 				state.items.splice(index, 1);
 			})
 			.addMatcher(getActions('pending'), state => {
-				state.isLoading = true; // Установка прапора isLoading true
+				state.isLoading = true;
 			})
 			.addMatcher(getActions('rejected'), (state, action) => {
 				state.isLoading = false;
