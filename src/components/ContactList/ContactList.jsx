@@ -7,7 +7,7 @@ import {
 	selectIsLoading,
 } from '../../redux/selectors';
 
-import { fetchContacts } from '../../redux/operations';
+import { fetchContacts } from '../../redux/contactsOps';
 
 const ContactList = () => {
 	const contacts = useSelector(selectFilteredContacts);
