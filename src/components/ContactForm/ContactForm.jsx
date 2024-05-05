@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../redux/contactsSlice';
+import { addContacts } from '../../redux/operations';
 import { nanoid } from 'nanoid';
 import { toast } from 'react-toastify';
 import { Form, Input, Label, SubmitButton } from './ContactForm.styled';
@@ -26,7 +26,7 @@ const ContactForm = () => {
 			return toast.warn(`${contact.name} is already in contacts.`);
 		}
 
-		dispatch(addContact(contact));
+		dispatch(addContacts(contact));
 		e.currentTarget.reset();
 	};
 
